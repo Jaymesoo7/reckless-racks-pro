@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Reckless Racks</string>
+    <string name="title_activity_main">Reckless Racks</string>
+    <string name="package_name">com.recklessracks.app</string>
+    <string name="custom_url_scheme">com.recklessracks.app</string>
+</resources>
