@@ -6,13 +6,17 @@ const supabase = createClient(
 )
 
 export const uploadScreenshot = async (file: File) => {
+  // This cleans the filename so iPhones don't cause errors
   const fileExt = file.name.split('.').pop()
-  const fileName = `${Math.random()}.${fileExt}`
-  const filePath = `public/${fileName}`
+  const fileName = `${Date.now()}-${Math.floor(Math.random() * 1000)}.${fileExt}`
+  const filePath = `${fileName}`
 
   const { error: uploadError } = await supabase.storage
     .from('screenshots')
-    .upload(filePath, file)
+    .upload(filePath, file, {
+      cacheControl: '3600',
+      upsert: false
+    })
 
   if (uploadError) throw uploadError
 
